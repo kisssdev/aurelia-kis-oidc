@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "amd",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "checkJs": true
+  }
+}

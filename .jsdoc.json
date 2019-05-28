@@ -1,0 +1,33 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": ["./src"]
+  },
+  "opts": {
+    "template": "node_modules/kis-jsdoc-plugin/templates/markdown",
+    "encoding": "utf8",
+    "destination": "./doc/",
+    "recurse": true,
+    "includes": "public,private"
+  },
+  "plugins": ["node_modules/jsdoc-escape-at", "node_modules/kis-jsdoc-plugin"],
+  "templates": {
+    "markdown": {
+      "imageext": "png",
+      "tocfilename": "toc.md",
+      "externallinks": {
+        "Aurelia": "https://aurelia.io/docs/api/framework/class/Aurelia",
+        "I18N": "https://aurelia.io/docs/api/i18n/class/I18N",
+        "HttpClient": "https://aurelia.io/docs/api/fetch-client/class/HttpClient",
+        "Router": "https://aurelia.io/docs/api/router/class/AppRouter",
+        "RouterConfiguration": "https://aurelia.io/docs/api/router/class/RouterConfiguration",
+        "NavigationInstruction": "https://aurelia.io/docs/api/router/class/NavigationInstruction",
+        "NavModel": "https://aurelia.io/docs/api/router/class/NavModel",
+        "FrameworkConfiguration": "https://aurelia.io/docs/api/framework/class/FrameworkConfiguration",
+        "Promise": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+      }
+    }
+  }
+}

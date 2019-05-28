@@ -1,0 +1,16 @@
+{
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": true,
+  "prettier.eslintIntegration": true,
+  "prettier.arrowParens": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "javascript.validate.enable": false,
+  "search.exclude": {
+    "**/*-bundle.js": true
+  }
+}
