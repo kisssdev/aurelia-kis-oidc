@@ -6,7 +6,10 @@ import { OpenidSilentLoginDetector } from './openid-silent-login-detector';
 
 /**
  * Implements a custom interceptor that sets OAuth2 bearer token and
- * obtain a new token when expired.
+ * obtains a new token when expired.
+ * Use this class to configure your http client to intercept 401 error to try a silent login
+ * and to add the bearer token.
+ * @category public
  */
 @inject(Connection, UserPrompt, OpenidSilentLoginDetector)
 export class Oauth2Interceptor {

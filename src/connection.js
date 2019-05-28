@@ -8,6 +8,7 @@ import { defaultUserIdClaimSelector } from './constants';
 
 /**
  * Provides an encapsulation of the OpenID Connect user connection.
+ * @category public
  */
 @inject(Router, PluginConfiguration, UserManager, UserPrompt)
 export class Connection {

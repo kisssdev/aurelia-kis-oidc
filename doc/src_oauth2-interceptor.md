@@ -1,6 +1,6 @@
 # Module `Oauth2Interceptor`
 
-![category:other](https://img.shields.io/badge/category-other-blue.svg?style=flat-square)
+![category:public](https://img.shields.io/badge/category-public-FF5000.svg?style=flat-square)
 
 
 
@@ -9,7 +9,9 @@
 # Class `Oauth2Interceptor`
 
 Implements a custom interceptor that sets OAuth2 bearer token and
-obtain a new token when expired.
+obtains a new token when expired.
+Use this class to configure your http client to intercept 401 error to try a silent login
+and to add the bearer token.
 
 ## Constructors
 

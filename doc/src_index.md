@@ -1,6 +1,6 @@
 # Module `Src`
 
-![category:other](https://img.shields.io/badge/category-other-blue.svg?style=flat-square)
+![category:internal](https://img.shields.io/badge/category-internal-blue.svg?style=flat-square)
 
 Defines the Aurelia plugin entry point.
 
@@ -10,7 +10,7 @@ Defines the Aurelia plugin entry point.
 
 ### `configure(aurelia, pluginCallback)`
 
-![modifier: public](images/badges/modifier-public.png) ![modifier: static](images/badges/modifier-static.png)
+![modifier: private](images/badges/modifier-private.png)
 
 Configures the plugin.
 

@@ -17,6 +17,15 @@
     "markdown": {
       "imageext": "png",
       "tocfilename": "toc.md",
+      "tocOrder": {
+        "public": 1,
+        "internal": 2
+      },
+      "badgecolors": {
+        "public": "FF5000",
+        "model": "009663",
+        "other": "9f9f9f"
+      },
       "externallinks": {
         "Aurelia": "https://aurelia.io/docs/api/framework/class/Aurelia",
         "I18N": "https://aurelia.io/docs/api/i18n/class/I18N",

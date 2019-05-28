@@ -6,6 +6,8 @@ import { OpenidSilentLoginDetector } from './openid-silent-login-detector';
 
 /**
  * Extends the aurelia application router to support the OpenID Connect redirections.
+ * Use this class in app.js to configure your router for OpenID Connect.
+ * @category public
  */
 @inject(PluginConfiguration, UserManager, OpenidSilentLoginDetector)
 export class OpenidRouting {

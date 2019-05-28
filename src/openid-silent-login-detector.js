@@ -2,6 +2,7 @@ import { inject } from 'aurelia-framework';
 
 /**
  * Implements the logic to find out the correct OpenID Connect flow.
+ * @category internal
  */
 @inject(Window)
 export class OpenidSilentLoginDetector {

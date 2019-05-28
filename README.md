@@ -11,9 +11,9 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 - When an API call is made and the access token has expired, an 401 http code is received.
 
-- The plugin will try to connect the user silently. As long as the user as a valid browser session to the OpenID provider, a new access token is retrieved and the API call is transparently successful.
+- The plugin tries to connect the user silently. As long as the user as a valid browser session to the OpenID provider, a new access token is retrieved and the API is called transparently.
 
-- If the silent login is not possible the user will be prompted to reconnect to the OpenID provider.
+- If the silent login is not possible the user is prompted to reconnect to the OpenID provider.
 
 - After the successful login, the user is redirected to his original page.
 
@@ -21,7 +21,7 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 - This plugin registers dynamically two routes (__signin-oidc__ and __signout-oidc__) within your application in order to implement the OpenID Connect Implicit Client protocol.
 
-- It implements an http interceptor that will deal with silent login and replay.
+- It implements an http interceptor that deals with silent login and replay.
 
 - It is possible to redirect the application on a specific route based on the presence of a specific claim in the user profile (See __redirectsOnClaim__ configuration).
 
@@ -68,8 +68,7 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
    // in your app.js or app.ts
    import { inject } from 'aurelia-framework';
    import { HttpClient } from 'aurelia-fetch-client';
-   import { OpenidRouting } from 'aurelia-kis-oidc';
-   import { Oauth2Interceptor } from 'aurelia-kis-oidc';
+   import { OpenidRouting, Oauth2Interceptor } from 'aurelia-kis-oidc';
 
    @inject(OpenidRouting, HttpClient, Oauth2Interceptor)
    export class App {
@@ -145,13 +144,13 @@ You can define specific options in the configuration returned by the __configure
 
 ### `userIdClaimSelector`
 
-Function that defines the profile claim that will be used as user identifier.
+Function that defines the profile claim used as user identifier.
 
 _Example:_
 
  ```javascript
  /**
- * Defines the profile claim that will be used as user identifier.
+ * Defines the profile claim used as user identifier.
  * @param {Object} profile - the user profile containing claims
  * @return {string} the user identifier
  */
@@ -164,7 +163,7 @@ If you do not define this option the default claim used is the __name__ claim.
 
 _Function that defines the user prompt to reconnect the session when it is expired._
 
-By default, it will user the native browser prompt.
+By default, it displays the native browser prompt.
 
 _Here's an example with the [iziToast](https://github.com/marcelodolza/iziToast) component:_
 

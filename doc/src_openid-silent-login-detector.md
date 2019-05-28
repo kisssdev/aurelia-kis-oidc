@@ -1,6 +1,6 @@
 # Module `OpenidSilentLoginDetector`
 
-![category:other](https://img.shields.io/badge/category-other-blue.svg?style=flat-square)
+![category:internal](https://img.shields.io/badge/category-internal-blue.svg?style=flat-square)
 
 
 

@@ -1,6 +1,6 @@
 # Module `OpenidRouting`
 
-![category:other](https://img.shields.io/badge/category-other-blue.svg?style=flat-square)
+![category:public](https://img.shields.io/badge/category-public-FF5000.svg?style=flat-square)
 
 
 
@@ -9,6 +9,7 @@
 # Class `OpenidRouting`
 
 Extends the aurelia application router to support the OpenID Connect redirections.
+Use this class in app.js to configure your router for OpenID Connect.
 
 ## Constructors
 
