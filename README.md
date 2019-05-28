@@ -2,16 +2,21 @@
 
 An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurelia-contrib/aurelia-open-id-connect) and based on the library [oidc-client-js](https://github.com/IdentityModel/oidc-client-js) that adapts the OpenID Connect Implicit Client protocol to the Aurelia router in a 'keep it simple' way.
 
-It will prompt the user to reconnect its session to the OpenID Identity Provider only if there is an unauthorized http call and the silent login has failed.
+- After a successful login to the OpenID provider, the access token is automatically attached to the HttpClient.
+
+- When an API call is made and the access token has expired, an 401 http code is received.
+
+- The plugin will try to connect the user silently. As long as the user as a valid browser session to the OpenID provider, a new access token is retrieved and the API call is transparently successful.
+
+- If the silent login is not possible the user will be prompted to reconnect to the OpenID provider.
+
+- After the successful login, the user is redirected to his original page.
 
 ## Features
 
 - This plugin registers dynamically two routes (__signin-oidc__ and __signout-oidc__) within your application in order to implement the OpenID Connect Implicit Client protocol.
 
-- It implements an http interceptor that will try silent login each time a 401 status code is returned by the http call.
-  - It the silent login is successful, the http call will be replayed with the new token.
-  - If the silent login fails, it will prompt the user to reconnect its session to the OpenID Identity Provider.
-    - It the login is successful, the user is redirected to the previous route.
+- It implements an http interceptor that will deal with silent login and replay.
 
 - It is possible to redirect the application on a specific route based on the presence of a specific claim in the user profile (See __redirectsOnClaim__ configuration).
 
