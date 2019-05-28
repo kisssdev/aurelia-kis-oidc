@@ -1,4 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.com/kisssdev/aurelia-kis-oidc.svg?branch=master)](https://travis-ci.com/kisssdev/aurelia-kis-oidc)
+[![codecov](https://codecov.io/gh/kisssdev/aurelia-kis-oidc/branch/master/graph/badge.svg)](https://codecov.io/gh/kisssdev/aurelia-kis-oidc)
 
 # aurelia-kis-oidc
 
