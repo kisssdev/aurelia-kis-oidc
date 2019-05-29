@@ -7,11 +7,11 @@
 
 An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurelia-contrib/aurelia-open-id-connect) and based on the library [oidc-client-js](https://github.com/IdentityModel/oidc-client-js) that adapts the OpenID Connect Implicit Client protocol to the Aurelia router in a 'keep it simple' way.
 
-- After a successful login to the OpenID provider, the access token is automatically attached to the HttpClient.
+- After a successful login to the OpenID provider, the access token is automatically attached to the http client.
 
-- When an API call is made and the access token has expired, an 401 http code is received.
+- When an API call is made and the access token has expired, a 401 http code is received.
 
-- The plugin tries to connect the user silently. As long as the user as a valid browser session to the OpenID provider, a new access token is retrieved and the API is called transparently.
+- The plugin tries to connect the user silently. If the user has a valid browser session to the OpenID provider, a new access token is retrieved, and the API is called transparently.
 
 - If the silent login is not possible the user is prompted to reconnect to the OpenID provider.
 
@@ -157,7 +157,7 @@ _Example:_
 const userIdClaimSelector = profile => profile.emails[0];
  ```
 
-If you do not define this option the default claim used is the __name__ claim.
+If you do not define this option, the default claim used is the __name__ claim.
 
 ### `reconnectPrompt`
 
