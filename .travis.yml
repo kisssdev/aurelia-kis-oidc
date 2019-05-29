@@ -1,5 +1,6 @@
 language: node_js
 node_js:
   - "11"
+if: tag IS present
 after_success:
     - bash <(curl -s https://codecov.io/bash)
