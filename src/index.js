@@ -2,6 +2,7 @@
  * Defines the Aurelia plugin entry point.
  * @module
  * @category internal
+ * @name Index
  */
 
 import { UserManager } from 'oidc-client';

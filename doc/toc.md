@@ -10,8 +10,11 @@ Use this class to configure your http client to intercept 401 error to try a sil
 and to add the bearer token._
   * [OpenidRouting](src_openid-routing.md) - _Extends the aurelia application router to support the OpenID Connect redirections.
 Use this class in app.js to configure your router for OpenID Connect._
+
 * ![category:internal](https://img.shields.io/badge/category-internal-blue.svg?style=flat-square)
-  * [Src](src_index.md) - _Defines the Aurelia plugin entry point._
+  * [Constants](src_constants.md) - _Defines the Aurelia plugin constants._
+  * [Index](src_index.md) - _Defines the Aurelia plugin entry point._
   * [OpenidSilentLoginDetector](src_openid-silent-login-detector.md) - _Implements the logic to find out the correct OpenID Connect flow._
   * [PluginConfiguration](src_plugin-configuration.md) - _Defines the configuration for the openid plugin._
   * [UserPrompt](src_user-prompt.md) - _Defines the user prompt service of the plugin._
+
