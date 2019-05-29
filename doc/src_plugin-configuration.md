@@ -1,4 +1,4 @@
-# Module `PluginConfiguration`
+# Module `plugin-configuration`
 
 ![category:internal](https://img.shields.io/badge/category-internal-blue.svg?style=flat-square)
 

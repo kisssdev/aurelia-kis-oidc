@@ -1,4 +1,4 @@
-# Module `Index`
+# Module `index`
 
 ![category:internal](https://img.shields.io/badge/category-internal-blue.svg?style=flat-square)
 

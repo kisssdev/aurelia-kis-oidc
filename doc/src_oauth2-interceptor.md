@@ -1,4 +1,4 @@
-# Module `Oauth2Interceptor`
+# Module `oauth2-interceptor`
 
 ![category:public](https://img.shields.io/badge/category-public-FF5000.svg?style=flat-square)
 

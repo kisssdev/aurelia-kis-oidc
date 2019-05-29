@@ -1,4 +1,4 @@
-# Module `UserPrompt`
+# Module `user-prompt`
 
 ![category:internal](https://img.shields.io/badge/category-internal-blue.svg?style=flat-square)
 

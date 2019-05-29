@@ -1,4 +1,4 @@
-# Module `Connection`
+# Module `connection`
 
 ![category:public](https://img.shields.io/badge/category-public-FF5000.svg?style=flat-square)
 
