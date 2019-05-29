@@ -1,5 +1,5 @@
 import { Connection } from '../../src/connection';
-import { defaultUserIdClaimSelector } from '../../src/constants';
+import { defaultUserIdClaimSelector, defaultSimulationUser } from '../../src/constants';
 
 // mock oidc Log function
 jest.mock('oidc-client');
@@ -69,14 +69,43 @@ describe('Connection', () => {
       expect(connection._userIdClaimSelector).toBe(expectedClaimSelector);
     });
 
+    test('uses the default simulationUser', () => {
+      const expectedSimulationUser = defaultSimulationUser;
+      const configuration = {
+        simulation: true
+      };
+      const connection = new Connection({}, configuration, mockUserManager, mockUserPrompt);
+      expect(connection._simulationUser).toBe(expectedSimulationUser);
+    });
+
+    test('uses the configured simulationUser', () => {
+      const expectedSimulationUser = expectedUser;
+      const configuration = {
+        simulation: true,
+        simulationUser: expectedUser
+      };
+      const connection = new Connection({}, configuration, mockUserManager, mockUserPrompt);
+      expect(connection._simulationUser).toBe(expectedSimulationUser);
+    });
+
     test('hooks up UserManager user loaded event', () => {
+      mockUserManager.events.addUserLoaded.mockClear();
       const connection = new Connection({}, {}, mockUserManager, mockUserPrompt);
       expect(mockUserManager.events.addUserLoaded).toBeCalled();
     });
 
     test('hooks up UserManager user unloaded event', () => {
+      mockUserManager.events.addUserUnloaded.mockClear();
       const connection = new Connection({}, {}, mockUserManager, mockUserPrompt);
       expect(mockUserManager.events.addUserUnloaded).toBeCalled();
+    });
+
+    test('does not hooks up UserManager user events in simulation mode', () => {
+      mockUserManager.events.addUserLoaded.mockClear();
+      mockUserManager.events.addUserUnloaded.mockClear();
+      const connection = new Connection({}, { simulation: true }, mockUserManager, mockUserPrompt);
+      expect(mockUserManager.events.addUserLoaded).not.toBeCalled();
+      expect(mockUserManager.events.addUserUnloaded).not.toBeCalled();
     });
   });
 
@@ -208,6 +237,17 @@ describe('Connection', () => {
   });
 
   describe('loginUser()', () => {
+    test('sets the simulationUser as user in simulation mode', async() => {
+      const expectedSimulationUser = expectedUser;
+      const configuration = {
+        simulation: true,
+        simulationUser: expectedUser
+      };
+      const connection = new Connection(mockRouter, configuration, mockUserManager, mockUserPrompt);
+      await connection.loginUser();
+      expect(connection.user).toBe(expectedSimulationUser);
+    });
+
     test('starts signin redirection with specified route', async() => {
       const expectedRoute = 'test';
       mockUserManager.signinRedirect.mockClear();
@@ -236,6 +276,16 @@ describe('Connection', () => {
   });
 
   describe('logoutUser()', () => {
+    test('resets the user in simulation mode', async() => {
+      const configuration = {
+        simulation: true,
+        simulationUser: expectedUser
+      };
+      const connection = new Connection(mockRouter, configuration, mockUserManager, mockUserPrompt);
+      await connection.logoutUser();
+      expect(connection.user).toBe(null);
+    });
+    
     test('starts signout redirection with specified route', async() => {
       const expectedRoute = 'test';
       mockUserManager.signoutRedirect.mockClear();
@@ -264,6 +314,17 @@ describe('Connection', () => {
   });
 
   describe('trySilentLogin()', () => {
+    test('sets the simulationUser as user in simulation mode', async() => {
+      const expectedSimulationUser = expectedUser;
+      const configuration = {
+        simulation: true,
+        simulationUser: expectedUser
+      };
+      const connection = new Connection(mockRouter, configuration, mockUserManager, mockUserPrompt);
+      await connection.trySilentLogin();
+      expect(connection.user).toBe(expectedSimulationUser);
+    });
+
     test('starts silent login redirection with specified route', async() => {
       const expectedRoute = 'test';
       mockUserManager.signinSilent.mockClear();

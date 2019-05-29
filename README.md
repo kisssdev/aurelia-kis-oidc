@@ -23,7 +23,9 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 - It implements an http interceptor that deals with silent login and replay.
 
-- It is possible to redirect the application on a specific route based on the presence of a specific claim in the user profile (See __redirectsOnClaim__ configuration).
+- It is possible to redirect the application on a specific route based on the presence of a specific claim in the user profile (See the __redirectsOnClaim__ configuration property).
+
+- There is a simulation mode that connect/disconnect the user without interacting with the OpenID provider (See the __simulation__ and __simulationUser__ configuration properties).
 
 ## Installation
 
@@ -134,9 +136,9 @@ export class Login {
 </template>
 ```
 
-You can change the claim that is used to represent the name of the user: see __userIdClaimSelector__ configuration property.
+You can change the claim that is used to represent the name of the user: see the __userIdClaimSelector__ configuration property.
 
-You can also change the user prompt interface when the session has expired: see __reconnectPrompt__ configuration property.
+You can also change the user prompt interface when the session has expired: see the __reconnectPrompt__ configuration property.
 
 ## Configuration options
 
@@ -207,7 +209,7 @@ _Example:_
 
 ### `userManagerSettings`
 
-This object is the exact configuration object of the openid-client-js library. 
+This object is the exact configuration object of the openid-client-js library.
 
 See [oidc-client-js](https://github.com/IdentityModel/oidc-client-js/wiki) wiki.
 
@@ -216,6 +218,40 @@ The __redirect_uri__ must be:
 
 If you specify __post_logout_redirect_uri__ it should be:
 `https://whatever_your_aurelia_app_url/signout-oidc`
+
+### `simulation`
+
+This boolean is for __development__ purpose only. It enables to bypass the OpenID provider dialog and to connect virtually the user.
+
+When you call the `loginUser` method of the [Connection](doc/src_connection.md) class the user is automatically connected as the default following user:
+
+```javascript
+{
+  profile: { name: 'Test User' },
+  expired: false,
+  access_token: '0123456789'
+}
+```
+
+You can define your own user object: see the __simulationUser__ configuration property.
+
+When you call `logoutUser` of the [Connection](doc/src_connection.md) class the user is automatically disconnected.
+
+Of course as the access token is fake you won't be able to call a protected web api.
+
+### `simulationUser`
+
+This object enables you to define a custom connected user that should fit your needs.
+
+_Example:_
+
+```javascript
+simulationUser: {
+      profile: { name: 'J.DOE', emails: ['john.doe@sample.com']},
+      expired: false,
+      access_token: '0123456789'
+    },
+```
 
 ## Project documentation
 

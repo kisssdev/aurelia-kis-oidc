@@ -14,8 +14,9 @@ Defines the configuration for the openid plugin.
 
 Name | Type | Description
 --- | --- | ---
-__userIdClaimSelector__ | `string` | *Function that defines the profile claim used to represent user identifier.*
-__redirectsOnClaim__ | `string` | *Function that defines the redirect route name based on the presence of specific profile claims.*
-__reconnectPrompt__ | `undefined` | *Function that defines the reconnection prompt that will be displayed when a new connection is required.*
-__userManagerSettings__ | `undefined` | *Configuration object of the underlying oidc-client-js library.
-See https://github.com/IdentityModel/oidc-client-js/wiki for details.*
+__simulation__ | `boolean` | *Activates the simulation where the login/logout is only simulated. You can define a related simulationUser.*
+__simulationUser__ | `Object` | *User object that defines the connected user when simulation is enable.*
+__userIdClaimSelector__ | `function` | *Function that defines the profile claim used to represent user identifier.*
+__redirectsOnClaim__ | `function` | *Function that defines the redirect route name based on the presence of specific profile claims.*
+__reconnectPrompt__ | `function` | *Function that defines the reconnection prompt that will be displayed when a new connection is required.*
+__userManagerSettings__ | `Object` | *Configuration object of the underlying oidc-client-js library. See https://github.com/IdentityModel/oidc-client-js/wiki for details.*

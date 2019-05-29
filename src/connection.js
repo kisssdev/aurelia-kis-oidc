@@ -4,7 +4,7 @@ import { UserManager, Log } from 'oidc-client';
 import { getCurrentRouteInfo } from './constants';
 import { UserPrompt } from './user-prompt';
 import { PluginConfiguration } from './plugin-configuration';
-import { defaultUserIdClaimSelector } from './constants';
+import { defaultUserIdClaimSelector, defaultSimulationUser } from './constants';
 
 /**
  * Provides an encapsulation of the OpenID Connect user connection.
@@ -24,7 +24,9 @@ export class Connection {
     this.user = null;
     this._router = router;
     this._userManager = userManager;
-    this.observeUser(user => this._setUser(user));
+    this.simulation = configuration.simulation === true;
+    this._simulationUser = configuration.simulationUser || defaultSimulationUser;
+    if (!this.simulation) this.observeUser(user => this._setUser(user));
     this._reconnectPrompt = userPrompt.reconnectPrompt;
     this._userIdClaimSelector = configuration.userIdClaimSelector || defaultUserIdClaimSelector;
   }
@@ -45,6 +47,10 @@ export class Connection {
    * @param {string} route - the aurelia route name that initiates the user connection
    */
   async loginUser(route) {
+    if (this.simulation) {
+      this._setUser(this._simulationUser);
+      return;
+    }
     const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.loginUser: starting signin redirection with ${redirectRoute}...`);
@@ -60,6 +66,10 @@ export class Connection {
    * @param {string} route - the aurelia route name that initiates the user deconnection
    */
   async logoutUser(route) {
+    if (this.simulation) {
+      this._setUser(null);
+      return;
+    }
     const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.logoutUser: starting signout redirection with ${redirectRoute}...`);
@@ -75,6 +85,10 @@ export class Connection {
    * @param {string} route - the aurelia route name that initiates the silent user connection
    */
   async trySilentLogin(route) {
+    if (this.simulation) {
+      this._setUser(this._simulationUser);
+      return;
+    }
     const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.trySilentLogin: starting silent signin redirection with ${redirectRoute}...`);
