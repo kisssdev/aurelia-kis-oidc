@@ -74,13 +74,35 @@ The default claim is &quot;name&quot;.
 
 Parameters | Type | Description
 --- | --- | ---
-__profile__ | `Object` | *the user profile*
-__*return*__ | `string` | *- the claim that represents the user identifier*
+__profile__ | `Object` | *the user profile containing claims*
+__*return*__ | `string` | *- the value of the claim that represents the user identifier*
 
 #### Value
 
 ```javascript
 profile => profile.name
+```
+
+---
+
+### `defaultSimulationUser`
+
+![modifier: public](images/badges/modifier-public.png) ![modifier: static](images/badges/modifier-static.png)
+
+Defines the default user in simulation mode.
+
+Parameters | Type | Description
+--- | --- | ---
+__*return*__ | `object` | *- the default user*
+
+#### Value
+
+```javascript
+{
+  profile: { name: 'Test User' },
+  expired: false,
+  access_token: '0123456789'
+}
 ```
 
 ---

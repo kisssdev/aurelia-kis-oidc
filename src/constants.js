@@ -31,7 +31,17 @@ export const defaultReconnectPrompt = yesFunc => {
 /**
  * Defines the default claim that represents the user identifier.
  * The default claim is "name".
- * @param {Object} profile - the user profile
- * @return {string} - the claim that represents the user identifier
+ * @param {Object} profile - the user profile containing claims
+ * @return {string} - the value of the claim that represents the user identifier
  */
 export const defaultUserIdClaimSelector = profile => profile.name;
+
+/**
+ * Defines the default user in simulation mode.
+ * @return {object} - the default user
+ */
+export const defaultSimulationUser = {
+  profile: { name: 'Test User' },
+  expired: false,
+  access_token: '0123456789'
+};
