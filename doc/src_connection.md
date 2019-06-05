@@ -94,6 +94,7 @@ __user__ | `User` | *the OpenID Connect user*
 
 Name | Type | Description
 --- | --- | ---
+__inProgress__ | `boolean` | *Is silent login in progress?*
 __userId__ | `string` | *The user identifier. It may be undefined.*
 __isUserLoggedIn__ | `boolean` | *Is the user currently connected?*
 __hasValidAccessToken__ | `boolean` | *Has the user a valid access token?*
