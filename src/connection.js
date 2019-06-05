@@ -91,9 +91,12 @@ export class Connection {
     }
     const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
+      this._inProgress = true;
       Log.info(`Connection.trySilentLogin: starting silent signin redirection with ${redirectRoute}...`);
       await this._userManager.signinSilent({ state: redirectRoute });
+      this._inProgress = false;
     } catch (error) {
+      this._inProgress = false;
       Log.warn(`Connection.trySilentLogin: silent signin error: ${error}`);
       if (error.error === 'interaction_required') {
         this._reconnectPrompt(() => this.loginUser(redirectRoute));
@@ -110,6 +113,15 @@ export class Connection {
    */
   _setUser(user) {
     this.user = user;
+  }
+
+  /**
+   * Is silent login in progress?
+   * @type {boolean}
+   */
+  @computedFrom('_inProgress')
+  get inProgress() {
+    return this._inProgress;
   }
 
   /**
