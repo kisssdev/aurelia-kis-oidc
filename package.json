@@ -1,7 +1,7 @@
 {
   "author": "KisssDev",
   "name": "aurelia-kis-oidc",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "An Aurelia plugin that encapsulates oidc-client-js library.",
   "main": "dist/commonjs/index.js",
   "scripts": {
