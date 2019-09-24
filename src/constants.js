@@ -37,6 +37,13 @@ export const defaultReconnectPrompt = yesFunc => {
 export const defaultUserIdClaimSelector = profile => profile.name;
 
 /**
+ * Defines the default silent login failure analysis to determine that a complete login is required.
+ * @param {Object} error - the error object returned by the identity provider on silent login
+ * @return {bool} - the condition on this object to trigger the complete login
+ */
+export const defaultLoginRequiredSelector = error => error.error === 'interaction_required';
+
+/**
  * Defines the default user in simulation mode.
  * @return {object} - the default user
  */

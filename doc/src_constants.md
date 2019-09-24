@@ -85,6 +85,25 @@ profile => profile.name
 
 ---
 
+### `defaultLoginRequiredSelector`
+
+![modifier: public](images/badges/modifier-public.png) ![modifier: static](images/badges/modifier-static.png)
+
+Defines the default silent login failure analysis to determine that a complete login is required.
+
+Parameters | Type | Description
+--- | --- | ---
+__error__ | `Object` | *the error object returned by the identity provider on silent login*
+__*return*__ | `bool` | *- the condition on this object to trigger the complete login*
+
+#### Value
+
+```javascript
+error => error.error === 'interaction_required'
+```
+
+---
+
 ### `defaultSimulationUser`
 
 ![modifier: public](images/badges/modifier-public.png) ![modifier: static](images/badges/modifier-static.png)

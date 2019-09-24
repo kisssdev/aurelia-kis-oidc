@@ -19,8 +19,18 @@ export class PluginConfiguration {
   /**
    * Function that defines the profile claim used to represent user identifier.
    * @member {function}
+   * @param {Object} profile - the user profile containing claims
+   * @return {string} - the value of the claim that represents the user identifier
    */
   userIdClaimSelector;
+
+  /**
+   * Function that defines the silent login failure analysis to determine that a complete login is required.
+   * @member {function}
+   * @param {Object} error - the error object returned by the identity provider on silent login
+   * @return {bool} - the condition on this object to trigger the complete login
+   */
+  loginRequiredSelector;
 
   /**
    * Function that defines the redirect route name based on the presence of specific profile claims.

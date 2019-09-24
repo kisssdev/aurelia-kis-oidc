@@ -4,7 +4,7 @@ import { UserManager, Log } from 'oidc-client';
 import { getCurrentRouteInfo } from './constants';
 import { UserPrompt } from './user-prompt';
 import { PluginConfiguration } from './plugin-configuration';
-import { defaultUserIdClaimSelector, defaultSimulationUser } from './constants';
+import { defaultUserIdClaimSelector, defaultSimulationUser, defaultLoginRequiredSelector } from './constants';
 
 /**
  * Provides an encapsulation of the OpenID Connect user connection.
@@ -29,6 +29,7 @@ export class Connection {
     if (!this.simulation) this.observeUser(user => this._setUser(user));
     this._reconnectPrompt = userPrompt.reconnectPrompt;
     this._userIdClaimSelector = configuration.userIdClaimSelector || defaultUserIdClaimSelector;
+    this._loginRequiredSelector = configuration.loginRequiredSelector || defaultLoginRequiredSelector;
   }
 
   /**
@@ -98,7 +99,7 @@ export class Connection {
     } catch (error) {
       this._inProgress = false;
       Log.warn(`Connection.trySilentLogin: silent signin error: ${error}`);
-      if (error.error === 'interaction_required') {
+      if (this._loginRequiredSelector(error)) {
         this._reconnectPrompt(() => this.loginUser(redirectRoute));
       } else {
         Log.error('Connection.trySilentLogin: unable to login silently', error);
