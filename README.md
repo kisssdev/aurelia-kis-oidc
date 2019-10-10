@@ -132,12 +132,12 @@ export class Login {
   </button>
   <!-- a conditional lougout link with user name -->
   <a if.bind="connection.isUserLoggedIn" click.trigger="connection.logoutUser()">
-    Logout ${connection.userName}
+    Logout ${connection.userId}
   </a>
 </template>
 ```
 
-You can change the claim that is used to represent the name of the user: see the __userIdClaimSelector__ configuration property.
+You can change the claim that is used to represent the identifier of the user (property userId): see the __userIdClaimSelector__ configuration property.
 
 You can also change the user prompt interface when the session has expired: see the __reconnectPrompt__ configuration property.
 
@@ -184,6 +184,21 @@ const reconnectPrompt = loginFunc => {
     buttons: [[`<button>Reconnect</button>`, (instance, toast) => loginFunc(), true]]
   });
 };
+```
+
+### `loginRequiredSelector`
+
+To determine that the silent login is not possible the OpenID provider will return an error. The plugin must handle the correct error code in order to show the reconnect prompt. The __loginRequiredSelector__ function defines this code analysis.
+The default function is the following (which is what Microsoft Azure B2C authentication currently returns when silent login is no more available):
+
+```javascript
+error => error.error === 'interaction_required';
+```
+
+You can customize it. For instance this is the function I use for an application authenticated by Azure Active Directory (and it should be the same for Azure B2B authentication):
+
+```javascript
+error => error.error === 'login_required';
 ```
 
 ### `redirectsOnClaim`
