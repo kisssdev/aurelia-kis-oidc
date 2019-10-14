@@ -22,4 +22,4 @@ function configure(aurelia, pluginCallback) {
   aurelia.container.registerInstance(Window, window);
 }
 
-export { configure, Oauth2Interceptor, OpenidRouting, Connection };
+export { configure, PluginConfiguration, Oauth2Interceptor, OpenidRouting, Connection };

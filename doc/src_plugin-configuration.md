@@ -14,8 +14,8 @@ Defines the configuration for the openid plugin.
 
 Name | Type | Description
 --- | --- | ---
-__simulation__ | `boolean` | *Activates the simulation where the login/logout is only simulated. You can define a related simulationUser.*
-__simulationUser__ | `Object` | *User object that defines the connected user when simulation is enable.*
+__simulation__ | `boolean` | *Activates the simulation mode where the login/logout is only simulated. You can define a related simulationUser.*
+__simulationUser__ | `Object` | *User object that defines the connected user when simulation mode is enable.*
 __userIdClaimSelector__ | `string` | *Function that defines the profile claim used to represent user identifier.*
 __loginRequiredSelector__ | `bool` | *Function that defines the silent login failure analysis to determine that a complete login is required.*
 __redirectsOnClaim__ | `function` | *Function that defines the redirect route name based on the presence of specific profile claims.*

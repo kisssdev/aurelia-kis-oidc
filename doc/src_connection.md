@@ -96,7 +96,7 @@ Name | Type | Description
 --- | --- | ---
 __inProgress__ | `boolean` | *Is silent login in progress?*
 __userId__ | `string` | *The user identifier. It may be undefined.*
-__isUserLoggedIn__ | `boolean` | *Is the user currently connected?*
+__isUserLoggedIn__ | `boolean` | *Is the user currently connected with an eventually expired access token?*
 __hasValidAccessToken__ | `boolean` | *Has the user a valid access token?*
 __accessToken__ | `string` | *The user access token. The token may be expired. Check hasValidAccessToken property before.*
 __userName__ | `string` | *The display name of the user. The &#x27;name&#x27; claim is used to provide this information.*

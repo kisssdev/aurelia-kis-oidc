@@ -135,7 +135,7 @@ export class Connection {
   }
 
   /**
-   * Is the user currently connected?
+   * Is the user currently connected with an eventually expired access token?
    * @type {boolean}
    */
   @computedFrom('user')

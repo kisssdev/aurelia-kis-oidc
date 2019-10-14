@@ -5,13 +5,13 @@
 export class PluginConfiguration {
 
   /**
-   * Activates the simulation where the login/logout is only simulated. You can define a related simulationUser.
+   * Activates the simulation mode where the login/logout is only simulated. You can define a related simulationUser.
    * @member {boolean}
    */
   simulation;
 
   /**
-   * User object that defines the connected user when simulation is enable.
+   * User object that defines the connected user when simulation mode is enable.
    * @member {Object}
    */
   simulationUser;
