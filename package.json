@@ -83,7 +83,8 @@
   },
   "module": "dist/native-modules/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src/index.d.ts"
   ],
   "jest": {
     "moduleNameMapper": {
