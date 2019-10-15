@@ -30,7 +30,7 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 ## Example
 
-An full example is available on the following [github repo](https://www.github.com/kisssdev/aurelia-kis-oidc-sample). The example is also available in live [here](https://aureliakisoidc.z16.web.core.windows.net/).
+A full example is available on the following [github repo](https://www.github.com/kisssdev/aurelia-kis-oidc-sample). The example is also available in live [here](https://aureliakisoidc.z16.web.core.windows.net/).
 
 ## Installation
 

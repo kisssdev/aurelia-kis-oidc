@@ -17,19 +17,23 @@ class IdpError extends Error {
 const expectedName = 'name';
 const expectedClaimValue = 'test';
 const expectedAccessToken = '1234';
+const expectedExpiresIn = 1234;
 const expectedUser = {
   profile: { name: expectedName, test: expectedClaimValue },
+  expires_in: expectedExpiresIn,
   access_token: expectedAccessToken,
   expired: false
 };
 const expectedExpiredUser = {
   profile: { name: expectedName, test: expectedClaimValue },
+  expires_in: 0,
   access_token: expectedAccessToken,
   expired: true
 };
 const expectedNotConnectedUser = {
   profile: undefined,
   access_token: undefined,
+  expires_in: undefined,
   expired: true
 };
 const expectedFragment = 'url/fragment';
@@ -258,6 +262,48 @@ describe('Connection', () => {
     test('returns undefined if user is null', async() => {
       mockUserManager.emitUserUnLoadedEvent(null);
       expect(await connection.userName).toBe(undefined);
+    });
+  });
+
+  describe('profile', () => {
+    let connection;
+    beforeEach(() => {
+      connection = new Connection({}, {}, mockUserManager, mockUserPrompt);
+    });
+
+    test('returns the profile if user is defined', async() => {
+      expect(await connection.profile).toBe(expectedUser.profile);
+    });
+
+    test('returns undefined if user is not connected', async() => {
+      mockUserManager.emitUserUnLoadedEvent(expectedNotConnectedUser);
+      expect(await connection.profile).toBe(undefined);
+    });
+
+    test('returns undefined if user is null', async() => {
+      mockUserManager.emitUserUnLoadedEvent(null);
+      expect(await connection.profile).toBe(undefined);
+    });
+  });
+
+  describe('expiresIn', () => {
+    let connection;
+    beforeEach(() => {
+      connection = new Connection({}, {}, mockUserManager, mockUserPrompt);
+    });
+
+    test('returns the profile if user is defined', async() => {
+      expect(await connection.expiresIn).toBe(expectedExpiresIn);
+    });
+
+    test('returns undefined if user is not connected', async() => {
+      mockUserManager.emitUserUnLoadedEvent(expectedNotConnectedUser);
+      expect(await connection.expiresIn).toBe(undefined);
+    });
+
+    test('returns undefined if user is null', async() => {
+      mockUserManager.emitUserUnLoadedEvent(null);
+      expect(await connection.expiresIn).toBe(undefined);
     });
   });
 
