@@ -28,6 +28,10 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 - There is a simulation mode that connect/disconnect the user without interacting with the OpenID provider (See the __simulation__ and __simulationUser__ configuration properties).
 
+## Example
+
+An full example is available on the following [github repo](https://www.github.com/kisssdev/aurelia-kis-oidc-sample). The example is also available in live [here](https://aureliakisoidc.z16.web.core.windows.net/).
+
 ## Installation
 
 1. Install the plugin:
