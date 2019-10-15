@@ -100,3 +100,5 @@ __isUserLoggedIn__ | `boolean` | *Is the user currently connected with an eventu
 __hasValidAccessToken__ | `boolean` | *Has the user a valid access token?*
 __accessToken__ | `string` | *The user access token. The token may be expired. Check hasValidAccessToken property before.*
 __userName__ | `string` | *The display name of the user. The &#x27;name&#x27; claim is used to provide this information.*
+__profile__ | `Object` | *The profile of the user. It contains the claims provided by the identity provider.*
+__expiresIn__ | `number` | *The number of seconds the access token has remaining.*

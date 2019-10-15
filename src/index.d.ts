@@ -32,7 +32,7 @@ export interface PluginConfiguration {
    * Function that defines the reconnection prompt that will be displayed when a new connection is required.
    * @member {function}
    */
-  reconnectPrompt?: (loginFunc: () => void) => void
+  reconnectPrompt?: (loginFunc: () => void) => void;
 
   /**
    * Configuration object of the underlying oidc-client-js library. See https://github.com/IdentityModel/oidc-client-js/wiki for details.
@@ -85,11 +85,20 @@ export class Connection {
    * The display name of the user. The 'name' claim is used to provide this information.
    */
   userName?: string;
+
+  /**
+   * The profile of the user. It contains the claims provided by the identity provider.
+   */
+  profile?: any;
+
+  /**
+   * The number of seconds the access token has remaining.
+   */
+  expiresIn?: number;
 }
 
 export class OpenidRouting {
   configureRouter(routerConfiguration: RouterConfiguration);
 }
 
-export class Oauth2Interceptor implements Interceptor {
-}
+export class Oauth2Interceptor implements Interceptor {}

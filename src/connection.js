@@ -171,4 +171,23 @@ export class Connection {
     return this.user?.profile?.name;
   }
 
+  /**
+   * The profile of the user. It contains the claims provided by the identity provider.
+   * @type {Object}
+   */
+  @computedFrom('user')
+  get profile() {
+    return this.user?.profile;
+  }
+
+  /**
+   * The number of seconds the access token has remaining.
+   * @type {number}
+   */
+  @computedFrom('user')
+  get expiresIn() {
+    // eslint-disable-next-line camelcase
+    return this.user?.expires_in;
+  }
+
 }
