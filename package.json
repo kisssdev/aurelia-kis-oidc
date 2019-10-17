@@ -25,9 +25,6 @@
     "oidc"
   ],
   "dependencies": {
-    "aurelia-fetch-client": "^1.0.0",
-    "aurelia-framework": "^1.0.0",
-    "aurelia-router": "^1.0.0",
     "oidc-client": "^1.9.1"
   },
   "devDependencies": {
