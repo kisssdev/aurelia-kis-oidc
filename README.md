@@ -37,7 +37,7 @@ A full example is available on the following [github repo](https://www.github.co
 1. Install the plugin:
 
    ```node
-   npm install aurelia-kis-oidc --dev
+   npm install aurelia-kis-oidc
    ```
 
 1. Call the plugin:
