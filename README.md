@@ -10,9 +10,9 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 - After a successful login to the OpenID provider, the access token is automatically attached to the http client.
 
-- When an API call is made and the access token has expired, a 401 http code is received.
+- When an API call is made, the plugin will check the access token validity. If the token has expired, the plugin will try to sign in the user silently in order to get a new access token.
 
-- The plugin tries to connect the user silently. If the user has a valid browser session to the OpenID provider, a new access token is retrieved, and the API is called transparently.
+- If the user has a valid browser session to the OpenID provider, a new access token is retrieved, and the API is called transparently.
 
 - If the silent login is not possible the user is prompted to reconnect to the OpenID provider.
 
