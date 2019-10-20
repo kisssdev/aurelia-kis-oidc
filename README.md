@@ -8,13 +8,13 @@
 
 An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurelia-contrib/aurelia-open-id-connect) and based on the library [oidc-client-js](https://github.com/IdentityModel/oidc-client-js) that adapts the OpenID Connect Implicit Client protocol to the Aurelia router in a 'keep it simple' way.
 
-- After a successful login to the OpenID provider, the access token is automatically attached to the http client.
+- After a successful login to the OpenID provider, the access token is automatically attached to the http client, so that further calls to an OAuth2 protected web api will be authenticated.
 
-- When an API call is made, the plugin will check the access token validity. If the token has expired, the plugin will try to sign in the user silently in order to get a new access token.
+- When a web api call is made, the plugin will check the access token validity. If the token has expired, the plugin will try to sign in the user silently in order to get a new access token.
 
-- If the user has a valid browser session to the OpenID provider, a new access token is retrieved, and the API is called transparently.
+- If the user has a valid browser session to the OpenID provider, a new access token is retrieved, and the web api is called transparently.
 
-- If the silent login is not possible the user is prompted to reconnect to the OpenID provider.
+- If the silent login is not possible the user is prompted to login to the OpenID provider.
 
 - After the successful login, the user is redirected to his original page.
 
@@ -22,7 +22,7 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 - This plugin registers dynamically two routes (__signin-oidc__ and __signout-oidc__) within your application in order to implement the OpenID Connect Implicit Client protocol.
 
-- It implements an http interceptor that deals with silent login and replay.
+- It implements an http interceptor that deals with silent login and bearer token.
 
 - It is possible to redirect the application on a specific route based on the presence of a specific claim in the user profile (See the __redirectsOnClaim__ configuration property).
 
@@ -30,7 +30,7 @@ An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurel
 
 ## Example
 
-A full example is available on the following [github repo](https://www.github.com/kisssdev/aurelia-kis-oidc-sample). The example is also available in live [here](https://aureliakisoidc.z16.web.core.windows.net/).
+A full example written in typescript is available on the following [github repo](https://www.github.com/kisssdev/aurelia-kis-oidc-sample). The example is also available in live [here](https://aureliakisoidc.z16.web.core.windows.net/). It is using a Microsoft Azure B2C OpenID/OAuth2 provider and you can login using your GitHub, Microsoft or Google account.
 
 ## Installation
 

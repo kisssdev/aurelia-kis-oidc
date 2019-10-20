@@ -22,7 +22,11 @@
     "aurelia",
     "plugin",
     "openid",
-    "oidc"
+    "oidc",
+    "oauth2",
+    "aad",
+    "azuread",
+    "b2c"
   ],
   "dependencies": {
     "oidc-client": "^1.9.1"
