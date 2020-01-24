@@ -47,7 +47,13 @@ describe('Connection', () => {
   beforeEach(() => {
     mockGetUser = jest.fn();
     mockUserManager = {
+      settings: {
+        metadata: {
+          end_session_endpoint: 'test'
+        }
+      },
       getUser: mockGetUser.mockResolvedValue(expectedUser),
+      removeUser: jest.fn(),
       signinRedirect: jest.fn(),
       signoutRedirect: jest.fn(),
       signinSilent: jest.fn(),
@@ -353,6 +359,13 @@ describe('Connection', () => {
       const connection = new Connection(mockRouter, configuration, mockUserManager, mockUserPrompt);
       await connection.logoutUser();
       expect(connection.user).toBe(null);
+    });
+
+    test('removes the user in local storage when no end_session_endpoint', async() => {
+      mockUserManager.settings.metadata.end_session_endpoint = undefined;
+      const connection = new Connection(mockRouter, {}, mockUserManager, mockUserPrompt);
+      await connection.logoutUser();
+      expect(mockUserManager.removeUser).toBeCalled();
     });
 
     test('starts signout redirection with specified route', async() => {

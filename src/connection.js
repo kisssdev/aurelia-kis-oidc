@@ -4,7 +4,11 @@ import { UserManager, Log } from 'oidc-client';
 import { getCurrentRouteInfo } from './constants';
 import { UserPrompt } from './user-prompt';
 import { PluginConfiguration } from './plugin-configuration';
-import { defaultUserIdClaimSelector, defaultSimulationUser, defaultLoginRequiredSelector } from './constants';
+import {
+  defaultUserIdClaimSelector,
+  defaultSimulationUser,
+  defaultLoginRequiredSelector
+} from './constants';
 
 /**
  * Provides an encapsulation of the OpenID Connect user connection.
@@ -25,11 +29,14 @@ export class Connection {
     this._router = router;
     this._userManager = userManager;
     this.simulation = configuration.simulation === true;
-    this._simulationUser = configuration.simulationUser || defaultSimulationUser;
+    this._simulationUser =
+      configuration.simulationUser || defaultSimulationUser;
     if (!this.simulation) this.observeUser(user => this._setUser(user));
     this._reconnectPrompt = userPrompt.reconnectPrompt;
-    this._userIdClaimSelector = configuration.userIdClaimSelector || defaultUserIdClaimSelector;
-    this._loginRequiredSelector = configuration.loginRequiredSelector || defaultLoginRequiredSelector;
+    this._userIdClaimSelector =
+      configuration.userIdClaimSelector || defaultUserIdClaimSelector;
+    this._loginRequiredSelector =
+      configuration.loginRequiredSelector || defaultLoginRequiredSelector;
   }
 
   /**
@@ -52,7 +59,8 @@ export class Connection {
       this._setUser(this._simulationUser);
       return;
     }
-    const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
+    const redirectRoute =
+      route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.loginUser: starting signin redirection with ${redirectRoute}...`);
       await this._userManager.signinRedirect({ state: redirectRoute });
@@ -71,7 +79,15 @@ export class Connection {
       this._setUser(null);
       return;
     }
-    const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
+    const noEndSessionEndpoint =
+      // eslint-disable-next-line camelcase
+      this._userManager.settings?.metadata?.end_session_endpoint === undefined;
+    if (noEndSessionEndpoint) {
+      await this._userManager.removeUser();
+      return;
+    }
+    const redirectRoute =
+      route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.logoutUser: starting signout redirection with ${redirectRoute}...`);
       await this._userManager.signoutRedirect({ state: redirectRoute });
@@ -90,7 +106,8 @@ export class Connection {
       this._setUser(this._simulationUser);
       return;
     }
-    const redirectRoute = route || getCurrentRouteInfo(this._router.currentInstruction);
+    const redirectRoute =
+      route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       this._inProgress = true;
       Log.info(`Connection.trySilentLogin: starting silent signin redirection with ${redirectRoute}...`);
@@ -131,7 +148,9 @@ export class Connection {
    */
   @computedFrom('user')
   get userId() {
-    return this.user?.profile ? this._userIdClaimSelector(this.user.profile) : '';
+    return this.user?.profile
+      ? this._userIdClaimSelector(this.user.profile)
+      : '';
   }
 
   /**
@@ -140,7 +159,7 @@ export class Connection {
    */
   @computedFrom('user')
   get isUserLoggedIn() {
-    return this.user !== null;
+    return this.user !== null && this.user !== undefined;
   }
 
   /**
@@ -149,7 +168,12 @@ export class Connection {
    */
   @computedFrom('user')
   get hasValidAccessToken() {
-    return (this.user !== null && this.user.expired === false && !!this.user.access_token );
+    return (
+      this.user !== null &&
+      this.user !== undefined &&
+      this.user.expired === false &&
+      !!this.user.access_token
+    );
   }
 
   /**
