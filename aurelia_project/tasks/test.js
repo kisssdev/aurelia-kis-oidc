@@ -1,4 +1,4 @@
-import jest from 'jest-cli';
+import { runCLI } from 'jest';
 import path from 'path';
 import packageJson from '../../package.json';
 
@@ -13,7 +13,7 @@ export default (cb) => {
 
   process.env.BABEL_TARGET = 'node';
 
-  jest.runCLI(options, [path.resolve(__dirname, '../../')]).then(({ results }) => {
+  runCLI(options, [path.resolve(__dirname, '../../')]).then(({ results }) => {
     if (results.numFailedTests || results.numFailedTestSuites) {
       cb('Tests Failed');
     } else {
