@@ -69,8 +69,7 @@ yesFunc => {
 
 ![modifier: public](images/badges/modifier-public.png) ![modifier: static](images/badges/modifier-static.png)
 
-Defines the default claim that represents the user identifier.
-The default claim is &quot;name&quot;.
+Defines the default claim that represents the user identifier.The default claim is &quot;name&quot;.
 
 Parameters | Type | Description
 --- | --- | ---

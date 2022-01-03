@@ -8,8 +8,7 @@
 
 # Class `OpenidRouting`
 
-Extends the aurelia application router to support the OpenID Connect redirections.
-Use this class in app.js to configure your router for OpenID Connect.
+Extends the aurelia application router to support the OpenID Connect redirections.Use this class in app.js to configure your router for OpenID Connect.
 
 ## Constructors
 

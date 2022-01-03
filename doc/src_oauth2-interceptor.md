@@ -8,10 +8,7 @@
 
 # Class `Oauth2Interceptor`
 
-Implements a custom interceptor that sets OAuth2 bearer token and
-obtains a new token when expired.
-Use this class to configure your http client to intercept 401 error to try a silent login
-and to add the bearer token.
+Implements a custom interceptor that sets OAuth2 bearer token andobtains a new token when expired.Use this class to configure your http client to intercept 401 error to try a silent loginand to add the bearer token.
 
 ## Constructors
 
