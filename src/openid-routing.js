@@ -1,6 +1,6 @@
 import { inject } from 'aurelia-framework';
 import { UserManager, Log } from 'oidc-client';
-import { ROUTES } from './constants';
+import { defaultOnError, ROUTES } from './constants';
 import { PluginConfiguration } from './plugin-configuration';
 import { OpenidSilentLoginDetector } from './openid-silent-login-detector';
 
@@ -22,6 +22,7 @@ export class OpenidRouting {
     this._configuration = configuration;
     this._userManager = userManager;
     this._detector = detector;
+    this._onError =  configuration.onError || defaultOnError;
   }
 
   /**
@@ -126,11 +127,17 @@ export class OpenidRouting {
     return anchor;
   }
 
+  /**
+   * Run the func method and complete the router navigation.
+   * @param {function} func - the function to run
+   * @param {NavigationInstruction} navigationInstruction - the navigation instruction
+   */
   async runAndCompleteNavigationInstruction(func, navigationInstruction) {
     try {
       await func();
       navigationInstruction();
     } catch (err) {
+      this._onError(err);
       navigationInstruction();
       throw err;
     }

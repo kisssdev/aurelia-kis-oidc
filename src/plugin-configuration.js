@@ -50,4 +50,11 @@ export class PluginConfiguration {
    */
   userManagerSettings;
 
+  /**
+   * Callback function called when the oidc provider returns an error.
+   * @member {function}
+   * @callback
+   */
+  onError;
+
 }

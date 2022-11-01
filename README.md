@@ -1,6 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm package](https://badge.fury.io/js/aurelia-kis-oidc.svg)](https://www.npmjs.com/package/aurelia-kis-oidc)
-[![Build Status](https://travis-ci.com/kisssdev/aurelia-kis-oidc.svg?branch=master)](https://travis-ci.com/kisssdev/aurelia-kis-oidc)
 [![codecov](https://codecov.io/gh/kisssdev/aurelia-kis-oidc/branch/master/graph/badge.svg)](https://codecov.io/gh/kisssdev/aurelia-kis-oidc)
 
 # aurelia-kis-oidc
@@ -223,6 +222,21 @@ _Example:_
  const redirectsOnClaim = profile => {
    // redirect newly created users to the settings view
    if (profile?.newUser) return 'settings';
+ };
+ ```
+
+### `onError`
+
+Sometimes the oicd provider may return an error during the response callback.
+
+You can use the __onError__ callback to retrieve the error.
+
+_Example:_
+
+ ```javascript
+ const onError = error => {
+   // for instance for errors returned by Azure AD
+   console.log(error.error_description);
  };
  ```
 

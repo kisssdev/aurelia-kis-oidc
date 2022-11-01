@@ -38,6 +38,11 @@ export interface PluginConfiguration {
    * Configuration object of the underlying oidc-client-js library. See https://github.com/IdentityModel/oidc-client-js/wiki for details.
    */
   userManagerSettings: UserManagerSettings;
+
+  /**
+   * Callback function called when the oidc provider returns an error.
+   */
+  onError?: (error: unknown) => void;
 }
 
 export class Connection {

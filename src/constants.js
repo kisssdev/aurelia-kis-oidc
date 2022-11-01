@@ -45,10 +45,16 @@ export const defaultLoginRequiredSelector = error => error.error === 'interactio
 
 /**
  * Defines the default user in simulation mode.
- * @return {object} - the default user
+ * @return {Object} - the default user
  */
 export const defaultSimulationUser = {
   profile: { name: 'Test User' },
   expired: false,
   access_token: '0123456789'
 };
+
+/**
+ * Defines the default onError callback.
+ * @param {Object} error - the error object returned by the identity provider
+ */
+export const defaultOnError = error => {};
