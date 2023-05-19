@@ -11,7 +11,7 @@
     "test": "au test",
     "upgrade": "npm-upgrade",
     "release": "release-it",
-    "doc": "./node_modules/.bin/jsdoc -c ./.jsdoc.json",
+    "doc": "jsdoc -c ./.jsdoc.json",
     "prepare": "npm run build",
     "pretest": "au lint",
     "preversion": "au test"
@@ -69,7 +69,7 @@
     "jest-transform-stub": "^2.0.0",
     "jsdoc": "^3.6.11",
     "jsdoc-escape-at": "^1.0.1",
-    "kis-jsdoc-plugin": "^1.4.11",
+    "kis-jsdoc-plugin": "^1.4.13",
     "minimatch": "^3.1.2",
     "npm-upgrade": "^3.1.0",
     "prettier": "^2.8.8",

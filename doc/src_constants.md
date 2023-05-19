@@ -111,7 +111,7 @@ Defines the default user in simulation mode.
 
 Parameters | Type | Description
 --- | --- | ---
-__*return*__ | `object` | *- the default user*
+__*return*__ | `Object` | *- the default user*
 
 #### Value
 
@@ -121,6 +121,24 @@ __*return*__ | `object` | *- the default user*
   expired: false,
   access_token: '0123456789'
 }
+```
+
+---
+
+### `defaultOnError`
+
+![modifier: public](images/badges/modifier-public.png) ![modifier: static](images/badges/modifier-static.png)
+
+Defines the default onError callback.
+
+Parameters | Type | Description
+--- | --- | ---
+__error__ | `Object` | *the error object returned by the identity provider*
+
+#### Value
+
+```javascript
+error => {}
 ```
 
 ---

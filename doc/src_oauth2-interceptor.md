@@ -12,7 +12,6 @@ Implements a custom interceptor that sets OAuth2 bearer token andobtains a new 
 
 ## Constructors
 
-__Note: parameters are automatically instanciated and injected.__
 
 ### `Oauth2Interceptor(connection, userPrompt, detector)`
 

@@ -12,7 +12,6 @@ Implements the logic to find out the correct OpenID Connect flow.
 
 ## Constructors
 
-__Note: parameters are automatically instanciated and injected.__
 
 ### `OpenidSilentLoginDetector(browserWindow)`
 

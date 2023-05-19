@@ -12,7 +12,6 @@ Provides an encapsulation of the OpenID Connect user connection.
 
 ## Constructors
 
-__Note: parameters are automatically instanciated and injected.__
 
 ### `Connection(router, configuration, userManager, userPrompt)`
 

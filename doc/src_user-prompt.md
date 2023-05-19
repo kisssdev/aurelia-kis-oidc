@@ -12,7 +12,6 @@ Defines the user prompt service of the plugin.
 
 ## Constructors
 
-__Note: parameters are automatically instanciated and injected.__
 
 ### `UserPrompt(configuration)`
 

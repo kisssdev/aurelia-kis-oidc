@@ -12,7 +12,6 @@ Extends the aurelia application router to support the OpenID Connect redirection
 
 ## Constructors
 
-__Note: parameters are automatically instanciated and injected.__
 
 ### `OpenidRouting(configuration, userManager, detector)`
 
@@ -102,5 +101,18 @@ Parameters | Type | Description
 --- | --- | ---
 __uri__ | `string` | *the specified uri*
 __*return*__ | `HTMLAnchorElement` | *the anchor element*
+
+---
+
+### `runAndCompleteNavigationInstruction(func, navigationInstruction)`
+
+![modifier: public](images/badges/modifier-public.png)
+
+Run the func method and complete the router navigation.
+
+Parameters | Type | Description
+--- | --- | ---
+__func__ | `function` | *the function to run*
+__navigationInstruction__ | [NavigationInstruction](https://aurelia.io/docs/api/router/class/NavigationInstruction) | *the navigation instruction*
 
 ---
