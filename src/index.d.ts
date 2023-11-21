@@ -46,20 +46,28 @@ export interface PluginConfiguration {
 }
 
 export class Connection {
+
   /**
    * Initiates the OpenID Connect user connection.
    * @param {string} route - the aurelia route name that initiates the user connection
+   * @param {Record<string, any>} options - optional options passed to underlying oidc signin method
+   * @return {Promise<any>}
    */
-  loginUser(route?: string): Promise<any>;
+  loginUser(route?: string, options?: Record<string, any>): Promise<any>;
+
   /**
    * Initiates the OpenID Connect user deconnection.
    * @param {string} route - the aurelia route name that initiates the user deconnection
-   */
-  logoutUser(route?: string): Promise<any>;
+   * @param {Record<string, any>} options - optional options passed to underlying oidc signout method
+   * @return {Promise<any>}
+  */
+  logoutUser(route?: string, options?: Record<string, any>): Promise<any>;
+
   /**
    * Initiates the OpenID Connect silent user connection.
    * @param {string} route - the aurelia route name that initiates the silent user connection
-   */
+   * @return {Promise<any>}
+  */
   trySilentLogin(route?: string): Promise<any>;
 
   /**

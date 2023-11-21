@@ -53,7 +53,8 @@ export class Connection {
   /**
    * Initiates the OpenID Connect user connection.
    * @param {string} route - the aurelia route name that initiates the user connection
-   * @param {Record<string,any>} options - options to pass to the underlying user manager signin method
+   * @param {Record<string, any>} options - optional options passed to underlying oidc signin method
+   * @return {Promise<any>}
   */
   async loginUser(route, options = {}) {
     if (this.simulation) {
@@ -74,8 +75,10 @@ export class Connection {
   /**
    * Initiates the OpenID Connect user deconnection.
    * @param {string} route - the aurelia route name that initiates the user deconnection
+   * @param {Record<string, any>} options - optional options passed to underlying oidc signout method
+   * @return {Promise<any>}
    */
-  async logoutUser(route) {
+  async logoutUser(route, options = {}) {
     if (this.simulation) {
       this._setUser(null);
       return;
@@ -91,7 +94,7 @@ export class Connection {
       route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.logoutUser: starting signout redirection with ${redirectRoute}...`);
-      await this._userManager.signoutRedirect({ state: redirectRoute });
+      await this._userManager.signoutRedirect({ state: redirectRoute, ...options });
     } catch (error) {
       Log.error('Connection.logoutUser: unable to logout', error);
       throw error;

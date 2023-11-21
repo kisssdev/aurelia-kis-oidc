@@ -384,6 +384,15 @@ describe('Connection', () => {
       expect(mockUserManager.signoutRedirect.mock.calls[0][0].state).toBe(expectedRoute);
     });
 
+    test('starts signout redirection with optional user manager signin option', async() => {
+      const expectedRoute = 'test';
+      const audience = 'audience';
+      const connection = new Connection(mockRouter, {}, mockUserManager, mockUserPrompt);
+      await connection.logoutUser(expectedRoute, { extraQueryParams: { audience }});
+      expect(mockUserManager.signoutRedirect.mock.calls[0][0].state).toBe(expectedRoute);
+      expect(mockUserManager.signoutRedirect.mock.calls[0][0].extraQueryParams.audience).toBe(audience);
+    });
+
     test('starts signout redirection with current route if no route specified', async() => {
       const connection = new Connection(mockRouter, {}, mockUserManager, mockUserPrompt);
       await connection.logoutUser();
