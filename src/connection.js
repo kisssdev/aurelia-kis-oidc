@@ -53,8 +53,9 @@ export class Connection {
   /**
    * Initiates the OpenID Connect user connection.
    * @param {string} route - the aurelia route name that initiates the user connection
-   */
-  async loginUser(route) {
+   * @param {Record<string,any>} options - options to pass to the underlying user manager signin method
+  */
+  async loginUser(route, options = {}) {
     if (this.simulation) {
       this._setUser(this._simulationUser);
       return;
@@ -63,7 +64,7 @@ export class Connection {
       route || getCurrentRouteInfo(this._router.currentInstruction);
     try {
       Log.info(`Connection.loginUser: starting signin redirection with ${redirectRoute}...`);
-      await this._userManager.signinRedirect({ state: redirectRoute });
+      await this._userManager.signinRedirect({ state: redirectRoute, ...options });
     } catch (error) {
       Log.error('Connection.loginUser: unable to login', error);
       throw error;

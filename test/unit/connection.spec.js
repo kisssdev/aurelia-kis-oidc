@@ -332,6 +332,15 @@ describe('Connection', () => {
       expect(mockUserManager.signinRedirect.mock.calls[0][0].state).toBe(expectedRoute);
     });
 
+    test('starts signin redirection with optional user manager signin option', async() => {
+      const expectedRoute = 'test';
+      const audience = 'audience';
+      const connection = new Connection(mockRouter, {}, mockUserManager, mockUserPrompt);
+      await connection.loginUser(expectedRoute, { extraQueryParams: { audience }});
+      expect(mockUserManager.signinRedirect.mock.calls[0][0].state).toBe(expectedRoute);
+      expect(mockUserManager.signinRedirect.mock.calls[0][0].extraQueryParams.audience).toBe(audience);
+    });
+
     test('starts signin redirection with current route if no route specified', async() => {
       const connection = new Connection(mockRouter, {}, mockUserManager, mockUserPrompt);
       await connection.loginUser();
