@@ -4,6 +4,10 @@
 
 # aurelia-kis-oidc
 
+**This repository is now archived.**
+**Please see the following [repository](https://github.com/actionlogementservices/aurelia-plugin-oidc) as replacement.**
+
+
 An Aurelia plugin inspired by [aurelia-open-id-connect](https://github.com/aurelia-contrib/aurelia-open-id-connect) and based on the library [oidc-client-js](https://github.com/IdentityModel/oidc-client-js) that adapts the OpenID Connect Implicit Client protocol to the Aurelia router in a 'keep it simple' way.
 
 - After a successful login to the OpenID provider, the access token is automatically attached to the http client, so that further calls to an OAuth2 protected web api will be authenticated.
